@@ -30,7 +30,15 @@ function getRepoContributors(repoOwner, repoName, cb) {
 //       cb(err, body);
 //     });
 //   }
-getRepoContributors('jquery', 'jquery', function(err, result) {
+
+var owner = process.argv[2];
+var repo = process.argv[3];
+
+if(!owner || !repo) {
+   return console.log("Please insert owner and repo on command line")
+}
+
+getRepoContributors(owner, repo, function(err, result) {
 	if (err) {
 		console.log('Errors:', err);
 	}
